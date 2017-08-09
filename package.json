@@ -1,0 +1,19 @@
+{
+  "name": "rain-predictor-client",
+  "version": "0.0.1",
+  "description": "A simple web based client for rain-predictor",
+  "main": "index.js",
+  "repository": "git@github.com:giest4life/rain-predictor-client.git",
+  "author": "Eqan Butt <eqan.asif@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^3.5.2",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "bootstrap": "4.0.0-alpha.6",
+    "corejs-typeahead": "^1.1.1",
+    "install": "^0.10.1",
+    "jquery": "^3.2.1"
+  }
+}

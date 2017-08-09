@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<link href="static/css/bootstrap.min.css" rel="stylesheet" />
+<link href="static/css/typeaheadjs.css" rel="stylesheet" />
+<script type="text/javascript" src="static/js/jquery-3.2.1.js"></script>
+<script type="text/javascript" src="static/js/tether.min.js"></script>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/typeahead.jquery.js"></script>
+<title>Will it Rain Today?</title>
+</head>
+<body>
+	<div class="container">
+		<h1 class="text-center">Will it Rain Today?</h1>
+		<form>
+			<div class="form-group">
+				<input class="form-control" type="text"
+					placeholder="Type a name of city to get rain prediction" id="search"/>
+			</div>
+
+		</form>
+		<div class="loading" style="display: none">
+			<p>Loading...</p>
+		</div>
+		<div>
+			<table class="table" id="probTable">
+				<thead class="thead-inverse">
+					<tr>
+						<th>Time</th>
+						<th>Conditions</th>
+						<th>Probability</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<script type="text/javascript" src="static/js/app.js"></script>
+</body>
+</html>
