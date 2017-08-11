@@ -46,13 +46,13 @@ inputBar
   )
   .typeahead('val', DEFAULT_INPUT_VALUE);
 
-inputBar.bind('typeahead:select', function(ev, suggestion) {
-  getRainPrediction(suggestion.canonicalName);
+inputBar.bind('typeahead:select', function(ev, {canonicalName}) {
+  getRainPrediction(canonicalName);
   $(this).typeahead('close');
 });
 
-inputBar.bind('typeahead:autocompleted', function(ev, suggestion) {
-  getRainPrediction(suggestion.canonicalName);
+inputBar.bind('typeahead:autocompleted', function(ev, {canonicalName}) {
+  getRainPrediction(canonicalName);
   $(this).typeahead('close');
 });
 
@@ -97,7 +97,7 @@ function getRainPrediction(location) {
     {
       city: location,
     },
-    function(data) {
+    function() {
       loadingDiv.css('display', 'none');
       removeResultsRows();
     },
