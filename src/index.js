@@ -1,6 +1,6 @@
 import $ from 'jquery';
-import 'corejs-typeahead';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'corejs-typeahead/dist/typeahead.jquery.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/typeaheadjs.css';
 
 const BASE_URI = window.location.pathname;
