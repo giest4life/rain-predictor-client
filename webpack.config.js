@@ -33,9 +33,7 @@ module.exports = {
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
-      jquery: 'jquery',
-      Tether: 'tether',
-      typeahead: 'typeahead',
+      Popper: 'popper.js',
     }),
     new HtmlWebpackPlugin({
       template: 'index.html',

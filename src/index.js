@@ -1,9 +1,7 @@
 import $ from 'jquery';
-import 'tether';
-import 'bootstrap/dist/js/bootstrap';
 import 'corejs-typeahead';
-import '../style/typeaheadjs.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import '../style/typeaheadjs.css';
 
 const BASE_URI = window.location.pathname;
 
