@@ -87,21 +87,39 @@ function showHourlyData(data) {
 }
 
 function getRainPrediction(location) {
-  const loadingDiv = $('.loading');
-  loadingDiv.css('display', 'block');
-
-  return $.get(
-    RAIN_PREDICTION_URI,
-    {
+  toggleLoadingDiv();
+  const request = new Promise(function(resolve, reject) {
+    $.get(RAIN_PREDICTION_URI, {
       city: location,
-    },
-    function() {
-      loadingDiv.css('display', 'none');
+    })
+      .done(resolve)
+      .fail(reject);
+  });
+
+  request
+    .then(function(data) {
       removeResultsRows();
-    },
-  ).then(showHourlyData);
+      return data;
+    })
+    .then(showHourlyData)
+    .catch(handleRequestError)
+    .then(toggleLoadingDiv);
 }
 
+function handleRequestError() {
+  const errorDiv = $('.loading-error');
+  errorDiv.css('display', 'block');
+}
+
+function toggleLoadingDiv() {
+  const loadingDiv = $('.loading');
+  const display = loadingDiv.css('display');
+  if (display === 'block') {
+    loadingDiv.css('display', 'none');
+  } else {
+    loadingDiv.css('display', 'block');
+  }
+}
 function removeResultsRows() {
   $('#probTable > tbody > tr').remove();
 }
