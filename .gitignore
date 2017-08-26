@@ -54,3 +54,7 @@ dist/
 
 #Other
 .DS_Store
+
+# Sublime Text Files
+*.sublime-workspace
+*.sublime-project
