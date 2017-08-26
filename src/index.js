@@ -1,8 +1,8 @@
 import $ from 'jquery';
 import 'corejs-typeahead/dist/typeahead.jquery.min.js';
+import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/typeaheadjs.css';
-
 const BASE_URI = window.location.pathname;
 
 const CITIES_SEARCH_URI = BASE_URI + 'api/cities';
