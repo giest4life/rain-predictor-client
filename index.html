@@ -1,38 +1,80 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-<title>Will it Rain Today?</title>
-</head>
-<body>
-	<div class="container">
-		<h1 class="text-center">Will it Rain Today?</h1>
-		<form>
-			<div class="form-group">
-				<input class="form-control" type="text"
-					placeholder="Type a name of city to get rain prediction" id="search"/>
-			</div>
 
-		</form>
-		<div class="loading" style="display: none">
-			<p>Loading...</p>
-		</div>
-		<div class="loading-error" style="display: none">
-			<p class="text-danger">Looks like there was an error reading data from the server :(</p>
-		</div>
-		<div>
-			<table class="table" id="probTable">
-				<thead class="thead-inverse">
-					<tr>
-						<th>Time</th>
-						<th>Conditions</th>
-						<th>Probability</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-		</div>
-	</div>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Will it Rain Today?</title>
+</head>
+
+<body>
+    <div class="container">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+<!--             <div class="navbar-nav">
+                <button class="btn btn-dark" type="button" data-toggle="modal" data-target="#signInModal">Sign In</button>
+            </div> -->
+            <div class="navbar-nav">
+                <a class="nav-link" href="#">Home</a>
+            </div>
+        </nav>
+        <br />
+        <form>
+            <div class="form-group">
+                <input class="form-control" type="text" placeholder="Type a name of city to get rain prediction" id="search" />
+            </div>
+        </form>
+        <div class="loading" style="display: none">
+            <p>Loading...</p>
+        </div>
+        <div class="loading-error" style="display: none">
+            <p class="text-danger">Looks like there was an error reading data from the server :(</p>
+        </div>
+        <div>
+            <table class="table" id="probTable">
+                <thead class="thead-inverse">
+                    <tr>
+                        <th>Time</th>
+                        <th>Conditions</th>
+                        <th>Probability</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+        <!-- Modal -->
+<!--         <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="signInForm" novalidate="true">
+                            <div class="form-group">
+                                <label for="inputEmail">Email address</label>
+                                <input type="email" class="form-control" id="inputEmail" minlength="3" aria-describedby="emailHelp" placeholder="Enter email" />
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword">Password</label>
+                                <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+                            </div>
+                            <div id="unauthorizedAlert" class="alert alert-danger fade show" role="alert" hidden>
+                                <button type="button" class="close" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                The username or password could not be validated
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+    </div>
 </body>
+
 </html>
