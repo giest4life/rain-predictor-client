@@ -7,7 +7,7 @@ import '../style/typeaheadjs.css';
 import {LOCATIONS_SEARCH_URI, RAIN_PREDICTION_URI} from './constants';
 // import './user-account.js';
 
-const DEFAULT_INPUT_VALUE = 'New York City, ';
+const DEFAULT_INPUT_VALUE = 'New York City, New York';
 const DEFAULT_TYPEAHEAD_OBJECT = {
   geonameId: 5128581,
   locationName: 'New York City',
