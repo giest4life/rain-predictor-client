@@ -3,13 +3,20 @@ import 'corejs-typeahead/dist/typeahead.jquery.min.js';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '../style/typeaheadjs.css';
-const BASE_URI = window.location.pathname;
 
-const CITIES_SEARCH_URI = BASE_URI + 'api/cities';
-const RAIN_PREDICTION_URI = BASE_URI + 'api/predict';
-const DEFAULT_INPUT_VALUE = 'New York, New York, United States';
+import {LOCATIONS_SEARCH_URI, RAIN_PREDICTION_URI} from './constants';
+import './user-account.js';
+
+const DEFAULT_INPUT_VALUE = 'New York City, ';
 const DEFAULT_TYPEAHEAD_OBJECT = {
-  canonicalName: DEFAULT_INPUT_VALUE,
+  geonameId: 5128581,
+  locationName: 'New York City',
+  longitude: -74.00597,
+  latitude: 40.71427,
+  countryCode: 'US',
+  countryName: 'United States of America',
+  admin1Code: 'NY',
+  admin1Name: 'New York',
 };
 
 const inputBar = $('#search');
@@ -27,7 +34,7 @@ inputBar
           return;
         }
         $.get(
-          CITIES_SEARCH_URI,
+          LOCATIONS_SEARCH_URI,
           {
             query: query,
           },
@@ -36,7 +43,15 @@ inputBar
       },
       async: true,
       limit: 10,
-      display: 'canonicalName',
+      display: function({locationName, admin1Code, countryName, admin1Name}) {
+        if (admin1Name) {
+          return locationName + ', ' + admin1Name;
+        }
+        if (/^\d+$/.test(admin1Code)) {
+          return locationName + ', ' + countryName;
+        }
+        return locationName + ', ' + admin1Code;
+      },
       templates: {
         notFound: '<div>No results found</div>',
       },
@@ -44,13 +59,13 @@ inputBar
   )
   .typeahead('val', DEFAULT_INPUT_VALUE);
 
-inputBar.bind('typeahead:select', function(ev, {canonicalName}) {
-  getRainPrediction(canonicalName);
+inputBar.bind('typeahead:select', function(ev, suggestion) {
+  getRainPrediction(suggestion);
   $(this).typeahead('close');
 });
 
-inputBar.bind('typeahead:autocompleted', function(ev, {canonicalName}) {
-  getRainPrediction(canonicalName);
+inputBar.bind('typeahead:autocompleted', function(ev, suggestion) {
+  getRainPrediction(suggestion);
   $(this).typeahead('close');
 });
 
@@ -86,11 +101,12 @@ function showHourlyData(data) {
   });
 }
 
-function getRainPrediction(location) {
+function getRainPrediction({longitude, latitude}) {
   toggleLoadingDiv();
   const request = new Promise(function(resolve, reject) {
     $.get(RAIN_PREDICTION_URI, {
-      city: location,
+      longitude,
+      latitude,
     })
       .done(resolve)
       .fail(reject);
