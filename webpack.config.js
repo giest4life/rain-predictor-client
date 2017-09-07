@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -25,11 +26,25 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        loader: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader']
+        }),
+      },
+      {
+        test: /\.js$/,
+        exclude: path.resolve('node_modules'),
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['env'],
+          },
+        },
       },
     ],
   },
   plugins: [
+    new ExtractTextPlugin('style.css'),
     new webpack.ProvidePlugin({
       jQuery: 'jquery',
       $: 'jquery',
