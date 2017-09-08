@@ -11,7 +11,7 @@ module.exports = {
     filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
   },
-  devtool: 'inline-source-map',
+  devtool: 'source-map',
   devServer: {
     contentBase: './dist',
     compress: true,
@@ -19,6 +19,9 @@ module.exports = {
     proxy: {
       '/api': {
         target: 'http://localhost:8080/rain-predictor',
+        pathRewrite: {
+          '^/api': '',
+        },
       },
     },
   },
@@ -28,7 +31,7 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader']
+          use: ['css-loader'],
         }),
       },
       {
